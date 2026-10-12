@@ -1,0 +1,16 @@
+stages:
+  - test
+
+# GitLab Ultimate Security Scanners
+include:
+  - template: Jobs/SAST.gitlab-ci.yml
+  - template: Jobs/Secret-Detection.gitlab-ci.yml
+
+# Manifest and Configuration Syntax Verification
+validate-manifest:
+  stage: test
+  image: node:20-alpine
+  script:
+    - node -e "const m = require('./manifest.json'); console.log(m.name);"
+  rules:
+    - if: '$CI_COMMIT_BRANCH'

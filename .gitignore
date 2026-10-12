@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and environment
+*.log
+.env
+.env.local
+
+# Diagnostic & test scripts
+test_keys.*
+*.py
+
+# Node / dependencies (if added in the future)
+node_modules/
+dist/
+build/
+*.zip

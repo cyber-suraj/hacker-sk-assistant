@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@500;600;700&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand-bg-start: #f8f3ec;
+      --sand-bg-mid: #eee3d5;
+      --sand-bg-end: #e4d5c1;
+      --glass-surface: rgba(255, 252, 248, 0.85);
+      --glass-surface-subtle: rgba(255, 252, 248, 0.7);
+      --glass-border: rgba(184, 158, 134, 0.3);
+      --glass-border-subtle: rgba(184, 158, 134, 0.35);
+      --text-primary: #26160d;
+      --text-secondary: #563e30;
+      --text-muted: #826a58;
+      --primary: #9b5329;
+      --primary-glow: rgba(155, 83, 41, 0.22);
+      --groq-pill-bg: rgba(205, 82, 30, 0.1);
+      --groq-pill-text: #9e3d17;
+      --groq-pill-border: rgba(205, 82, 30, 0.25);
+      --popup-btn-grad: linear-gradient(135deg, #a45a2a 0%, #87431b 100%);
+      --popup-btn-hover: linear-gradient(135deg, #b3632e 0%, #94491d 100%);
+      --popup-btn-text: #fffaf5;
+      --input-bg: rgba(255, 255, 255, 0.85);
+      --input-border: rgba(184, 158, 134, 0.4);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 295px;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--sand-bg-mid, #ede3d4);
+      background-color: var(--sand-bg-mid, #ede3d4);
+      background-image: linear-gradient(160deg, var(--sand-bg-start) 0%, var(--sand-bg-mid) 50%, var(--sand-bg-end) 100%);
+      color: var(--text-primary);
+      padding: 0;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .header {
+      background: var(--glass-surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+    }
+    .title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .badge {
+      background: var(--groq-pill-bg);
+      color: var(--groq-pill-text);
+      border: 1px solid var(--groq-pill-border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+    }
+    .content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+    .snip-btn {
+      width: 100%;
+      background: var(--popup-btn-grad);
+      color: var(--popup-btn-text);
+      border: none;
+      border-radius: 9px;
+      padding: 11px 14px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px var(--primary-glow);
+      transition: transform 0.1s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+    .snip-btn:hover {
+      background: var(--popup-btn-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px var(--primary-glow);
+    }
+    .snip-btn:active {
+      transform: scale(0.96);
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+    select {
+      width: 100%;
+      padding: 9px 11px;
+      background: var(--input-bg);
+      color: var(--text-primary);
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.12s ease, box-shadow 0.12s ease;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+    select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--glass-surface-subtle);
+      backdrop-filter: blur(10px);
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--glass-border-subtle);
+      cursor: pointer;
+      transition: background-color 0.12s ease, border-color 0.12s ease;
+    }
+    .toggle-row:hover {
+      background: var(--glass-surface);
+    }
+    .toggle-row:active {
+      transform: scale(0.985);
+    }
+    .toggle-label {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    /* Switch Style */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 21px;
+      flex-shrink: 0;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--glass-border-subtle);
+      transition: background-color .15s ease;
+      border-radius: 20px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 15px;
+      width: 15px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: transform .15s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    input:checked + .slider {
+      background-color: var(--primary);
+    }
+    input:checked + .slider:before {
+      transform: translateX(15px);
+    }
+    .more-settings-btn {
+      width: 100%;
+      background: var(--input-bg);
+      color: var(--text-secondary);
+      border: 1px solid var(--glass-border-subtle);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: transform 0.1s ease, background 0.12s ease, border-color 0.12s ease;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      margin-top: 2px;
+    }
+    .more-settings-btn:hover {
+      background: var(--glass-surface);
+      color: var(--text-primary);
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+    .more-settings-btn:active {
+      transform: scale(0.96);
+    }
+    .footer {
+      padding: 9px 15px 11px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--glass-border);
+    }
+    .footer kbd {
+      background: var(--glass-surface);
+      border: 1px solid var(--glass-border-subtle);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">
+      <span>📚 Hacker-SK Assistant</span>
+    </div>
+    <span class="badge" id="popupThemeBadge">Groq ⚡</span>
+  </div>
+
+  <div class="content">
+    <button id="snipBtn" class="snip-btn" type="button">
+      <span>✂️ Start Snipping</span>
+    </button>
+
+    <div class="field-group">
+      <label for="subjectSelect">Subject Domain</label>
+      <select id="subjectSelect">
+        <option value="auto">🌐 Auto / General</option>
+        <option value="aptitude-reasoning">🧩 Aptitude & Logical Reasoning</option>
+        <option value="prob-stats">📊 Probability & Statistics</option>
+        <option value="dsa">⚡ Algorithms & Data Structures</option>
+        <option value="backend-dev">⚙️ Backend Development</option>
+        <option value="ai-finance">🤖 AI For Finance</option>
+        <option value="communication">💬 Verbal & Communication</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label for="styleSelect">Answer Style</label>
+      <select id="styleSelect">
+        <option value="detailed">📝 Detailed Step-by-Step</option>
+        <option value="short">⚡ Short (Why + Answer)</option>
+        <option value="mcq">🔘 MCQ — Correct Option Only</option>
+      </select>
+    </div>
+
+    <label class="toggle-row" for="autoSelectCb">
+      <span class="toggle-label">
+        <span>⚡ Auto-Select on Page</span>
+      </span>
+      <span class="switch">
+        <input type="checkbox" id="autoSelectCb">
+        <span class="slider"></span>
+      </span>
+    </label>
+
+    <button id="openSettingsBtn" class="more-settings-btn" type="button">
+      <span>⚙️ More Settings (New Tab) ↗</span>
+    </button>
+  </div>
+
+  <div class="footer">
+    Shortcut: <kbd>Alt</kbd> + <kbd>C</kbd> to snip anytime
+  </div>
+
+  <script src="themes.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
