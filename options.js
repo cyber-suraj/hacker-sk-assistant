@@ -179,7 +179,7 @@ function updateThemeUI() {
     : ((typeof HS_THEMES !== "undefined" && HS_THEMES["default"]) ? HS_THEMES["default"] : null);
 
   if (snipBadge && activeSnipTheme) {
-    snipBadge.innerText = isSnipCustom ? `${activeSnipTheme.name} ✦` : "Atelier Sand (Default)";
+    snipBadge.innerText = isSnipCustom ? `${activeSnipTheme.name} ✦` : "Hacker Terminal (Default)";
   }
 
   // Update active entries in snip flow
@@ -203,7 +203,7 @@ function updateThemeUI() {
     : ((isSnipCustom && activeSnipTheme) ? activeSnipTheme : ((typeof HS_THEMES !== "undefined" && HS_THEMES["default"]) ? HS_THEMES["default"] : null));
 
   if (answerBadge && activeAnswerTheme) {
-    answerBadge.innerText = isAnswerCustom ? `${activeAnswerTheme.name} ✦` : "Atelier Sand (Default)";
+    answerBadge.innerText = isAnswerCustom ? `${activeAnswerTheme.name} ✦` : "Hacker Terminal (Default)";
   }
 
   // Update active entries in answer flow
@@ -273,7 +273,7 @@ function updateThemeUI() {
     : ((typeof HS_THEMES !== "undefined" && HS_THEMES["default"]) ? HS_THEMES["default"] : null);
 
   if (tabBadge && activeTabTheme) {
-    tabBadge.innerText = isTabCustom ? `${activeTabTheme.name} ✦` : "Atelier Sand (Default)";
+    tabBadge.innerText = isTabCustom ? `${activeTabTheme.name} ✦` : "Hacker Terminal (Default)";
   }
 
   // Update active entries in tab flow

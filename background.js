@@ -17,7 +17,7 @@ initDefaultKeys();
 chrome.commands.onCommand.addListener((command) => {
   if (command === "activate-snip") {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs && tabs[0]) {
+      if (tabs && tabs[0] && tabs[0].url && !tabs[0].url.startsWith("chrome-extension://")) {
         chrome.tabs.sendMessage(tabs[0].id, { action: "startSnip" }, () => {
           if (chrome.runtime.lastError) {
             chrome.scripting.executeScript({
@@ -30,7 +30,7 @@ chrome.commands.onCommand.addListener((command) => {
     });
   } else if (command === "close-overlay") {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs && tabs[0]) {
+      if (tabs && tabs[0] && tabs[0].url && !tabs[0].url.startsWith("chrome-extension://")) {
         chrome.tabs.sendMessage(tabs[0].id, { action: "closeOverlayAndDot" }, () => {
           if (chrome.runtime.lastError) {
             chrome.scripting.executeScript({

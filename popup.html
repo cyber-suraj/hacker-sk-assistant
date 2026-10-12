@@ -248,11 +248,59 @@
       color: var(--primary);
     }
   </style>
+<style>
+  :root {
+    --sand-bg-start: #050a06;
+    --sand-bg-mid: #0a1108;
+    --sand-bg-end: #030705;
+    --glass-surface: rgba(10, 18, 14, 0.95);
+    --glass-surface-subtle: rgba(15, 26, 20, 0.85);
+    --glass-border: rgba(0, 255, 136, 0.18);
+    --glass-border-subtle: rgba(0, 255, 136, 0.10);
+    --text-primary: #d1ffd8;
+    --text-secondary: #86efac;
+    --text-muted: #5a8f6e;
+    --primary: #00ff88;
+    --primary-glow: rgba(0, 255, 136, 0.25);
+    --groq-pill-bg: rgba(0, 255, 136, 0.10);
+    --groq-pill-text: #00ff88;
+    --groq-pill-border: rgba(0, 255, 136, 0.30);
+    --popup-btn-grad: linear-gradient(135deg, #00ff88 0%, #22d3ee 100%);
+    --popup-btn-hover: linear-gradient(135deg, #33ffaa 0%, #67e8f9 100%);
+    --popup-btn-text: #020704;
+    --input-bg: rgba(5, 12, 8, 0.9);
+    --input-border: rgba(0, 255, 136, 0.25);
+  }
+  body, .title, .snip-btn, select, .more-settings-btn, .footer,
+  button, input, label, .toggle-label, .field-group label {
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, Monaco, Consolas, monospace !important;
+  }
+  .title {
+    letter-spacing: 0.4px;
+    text-shadow: 0 0 14px rgba(0, 255, 136, 0.30);
+  }
+  .snip-btn {
+    font-weight: 700 !important;
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.35) !important;
+  }
+  .snip-btn:hover {
+    box-shadow: 0 6px 24px rgba(0, 255, 136, 0.55) !important;
+  }
+  .slider {
+    background-color: rgba(0, 255, 136, 0.15) !important;
+  }
+  input:checked + .slider {
+    background-color: var(--primary) !important;
+  }
+  .badge {
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.20);
+  }
+</style>
 </head>
 <body>
   <div class="header">
     <div class="title">
-      <span>📚 Hacker-SK Assistant</span>
+      <span style="font-family:'JetBrains Mono',monospace;">[&gt;_] HACKER-SK</span>
     </div>
     <span class="badge" id="popupThemeBadge">Groq ⚡</span>
   </div>

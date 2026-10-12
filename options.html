@@ -964,6 +964,73 @@
       }
     }
   </style>
+<style>
+  :root {
+    --font-italian: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --font-display: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --font-serif: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    --font-ui: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+  body, button, input, select, textarea, label,
+  .theme-flow-name, .header-title h1, .card-title,
+  .theme-flow-mood, .theme-flow-sub, .field label,
+  .switch-info h4, .switch-info p, .link-btn, .card-subtitle-flourish {
+    font-family: 'JetBrains Mono', ui-monospace, Menlo, Monaco, Consolas, monospace !important;
+  }
+  .header-icon-box {
+    background: rgba(0, 255, 136, 0.10) !important;
+    border: 1px solid rgba(0, 255, 136, 0.30) !important;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #00ff88 0%, #22d3ee 100%) !important;
+    color: #020704 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 20px rgba(0, 255, 136, 0.30) !important;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #33ffaa 0%, #67e8f9 100%) !important;
+    box-shadow: 0 6px 24px rgba(0, 255, 136, 0.45) !important;
+  }
+  .slider {
+    background-color: rgba(0, 255, 136, 0.15) !important;
+  }
+  input:checked + .slider {
+    background-color: var(--primary) !important;
+  }
+  input[type="range"] {
+    background: rgba(0, 255, 136, 0.15) !important;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    background: var(--primary) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.65) !important;
+    border: 2px solid #050a06 !important;
+  }
+  input[type="range"]::-moz-range-thumb {
+    background: var(--primary) !important;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.65) !important;
+    border: 2px solid #050a06 !important;
+  }
+  .provider-pill {
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.18) !important;
+  }
+  .card:hover {
+    box-shadow: 0 8px 30px rgba(0, 255, 136, 0.10),
+                0 0 0 1px rgba(0, 255, 136, 0.15) !important;
+  }
+  .header-title h1 {
+    letter-spacing: 0.5px !important;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.25);
+  }
+  .nav-tab-btn.active {
+    box-shadow: 0 0 14px rgba(0, 255, 136, 0.20) !important;
+  }
+  .tab-icon {
+    filter: drop-shadow(0 0 4px rgba(0, 255, 136, 0.5));
+  }
+  .save-bar {
+    box-shadow: 0 -6px 30px rgba(0, 255, 136, 0.10) !important;
+  }
+</style>
 </head>
 <body>
   <div class="container">
@@ -971,7 +1038,7 @@
     <!-- Header Banner -->
     <div class="header-card">
       <div class="header-title">
-        <div class="header-icon-box">🏛️</div>
+        <div class="header-icon-box" style="font-family:'JetBrains Mono',monospace;color:#00ff88;font-weight:700;font-size:22px;">&gt;_</div>
         <div>
           <h1>Hacker-SK Assistant <span style="font-family: var(--font-italian); font-style: italic; font-weight: 500; font-size: 21px; opacity: 0.85;">— Studio & Configurazione</span></h1>
           <p>L'Arte della Precisione • High-Speed Groq AI Vision & Editorial Styling Engine</p>
