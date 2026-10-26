@@ -5,14 +5,19 @@
 [![Model: Qwen 3.8 27B](https://img.shields.io/badge/Model-Qwen%203.8%2027B-8b5cf6)](https://console.groq.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-10b981.svg)](LICENSE)
 
-> **Hacker-SK Assistant** is a high-speed, unobtrusive screen-snipping browser assistant engineered for students, engineers, and competitive test-takers. Snip any question or diagram directly off your screen with `Alt+C` and receive instant, streaming visual solutions powered by Groq's high-throughput LPU inference (`qwen/qwen3.8-27b`).
+> **Hacker-SK Assistant** is a high-speed, unobtrusive screen-snipping browser assistant engineered for students, engineers, and competitive test-takers. Snip any question or diagram directly off your active page and get a fast, step-by-step explanation using Groq AI.
+
+> [!WARNING]
+> ⚠️ This tool is intended only for learning, understanding, and doubt-solving when the question is clearly visible on-screen. It must not be used for cheating, exam malpractice, unauthorized assistance, or any unethical activity.
+>
+> The developer is not responsible for any misuse, violation of rules, policies, or laws. Use it strictly for educational and legitimate learning purposes.
 
 ---
 
 - **🔍 Inline Step-by-Step Derivations:** Click `🔍 Explain Step-by-Step` directly on MCQ or Short answers to deep-dive into complete mathematical derivations without re-snipping the question.
-- **⚡ Display-Synced Streaming (requestAnimationFrame):** Renders high-speed (300+ token/s) Groq inference with 60Hz/120Hz V-Sync throttling, completely preventing DOM micro-stutters and layout thrashing.
-- **⏳ Smart 60s Rate-Limit (HTTP 429) Backoff Memory:** In-memory tracking automatically puts exhausted keys on a 60-second cooldown and prioritizes healthy keys, eliminating wasteful 500ms–1500ms failed HTTP roundtrips.
-- **🎨 Acrylic Sand & Warm Espresso Aesthetic:** Calibrated glassmorphic floating overlays (`rgba(246, 241, 235, 0.90)`), tactile terracotta bronze accents (`#87431b`), and clean Plus Jakarta Sans typography.
+- **⚡ Display-Synced Streaming (requestAnimationFrame):** Renders high-speed (300+ token/s) Groq inference with 60Hz/120Hz V-Sync throttling, completely preventing DOM micro-stutters and layout jank during long answers.
+- **⏳ Smart 60s Rate-Limit (HTTP 429) Backoff Memory:** In-memory tracking automatically puts exhausted keys on a 60-second cooldown and prioritizes healthy keys, eliminating wasteful 500ms–15-second retry loops.
+- **🎨 Acrylic Sand & Warm Espresso Aesthetic:** Calibrated glassmorphic floating overlays (`rgba(246, 241, 235, 0.90)`), tactile terracotta bronze accents (`#87431b`), and clean Plus Jakarta Sans typography for a comfortable study experience.
 - **✂️ Seamless Screen Snipping (`Alt+C`):** Select any question, mathematical equation, or complex diagram on any webpage with zero lag.
 - **🖱️ Instant Right-Click Cancellation:** Easily abort snipping mode immediately by simply **right-clicking** anywhere or pressing **Esc**.
 - **🎯 Customizable Snipping Cursors:**
